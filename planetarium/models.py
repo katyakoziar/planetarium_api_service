@@ -19,6 +19,10 @@ class PlanetariumDome(models.Model):
     def capacity(self) -> int:
         return self.rows * self.seats_in_row
 
+    class Meta:
+        verbose_name = "planetarium_domes"
+        verbose_name_plural = "planetarium_domes"
+
     def __str__(self):
         return self.name
 
