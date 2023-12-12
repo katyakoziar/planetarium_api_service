@@ -34,8 +34,8 @@ class AstronomyShow(models.Model):
 
     class Meta:
         ordering = ("title",)
-        verbose_name = "astronomy_show"
-        verbose_name_plural = "astronomy_show"
+        verbose_name = "astronomy_shows"
+        verbose_name_plural = "astronomy_shows"
 
     def __str__(self):
         return self.title
@@ -98,7 +98,7 @@ class Ticket(models.Model):
         # Check if the seat is within the range
         if self.seat < 1 or self.seat > self.show_session.planetarium_dome.seats_in_row:
             raise ValidationError(
-                {'seat': 'Seat number must be within the range of seats in the row.'}
+                {"seat": "Seat number must be within the range of seats in the row."}
             )
 
         if Ticket.objects.filter(
@@ -106,7 +106,7 @@ class Ticket(models.Model):
                 row=self.row,
                 seat=self.seat
         ).exclude(id=self.id).exists():
-            raise ValidationError('This seat is already taken.')
+            raise ValidationError("This seat is already taken.")
 
     class Meta:
         unique_together = ("show_session", "row", "seat")
