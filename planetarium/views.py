@@ -9,7 +9,7 @@ from planetarium.models import (
     ShowTheme,
     PlanetariumDome,
     ShowSession,
-    Reservation
+    Reservation, AstronomyShow
 )
 from planetarium.serializers import (
     ShowThemeSerializer,
@@ -47,7 +47,7 @@ class AstronomyShowViewSet(
     mixins.RetrieveModelMixin,
     GenericViewSet
 ):
-    queryset = ShowTheme.objects.prefetch_related("show_themes")
+    queryset = AstronomyShow.objects.prefetch_related("themes")
     serializer_class = AstronomyShowSerializer
 
     @staticmethod
@@ -74,7 +74,7 @@ class AstronomyShowViewSet(
         if self.action == "retrieve":
             return AstronomyShowDetailSerializer
 
-        return ShowThemeSerializer
+        return AstronomyShowSerializer
 
 
 class ShowSessionViewSet(viewsets.ModelViewSet):
