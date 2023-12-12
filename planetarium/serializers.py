@@ -69,10 +69,10 @@ class ShowSessionListSerializer(serializers.ModelSerializer):
         model = ShowSession
         fields = (
             "id",
-            "show_time"
+            "show_time",
             "astronomy_show_title",
             "planetarium_dome_name",
-            "planetarium_dome_capacity"
+            "planetarium_dome_capacity",
             "tickets_available",
         )
 
