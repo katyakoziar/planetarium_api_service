@@ -63,7 +63,7 @@ class AstronomyShowViewSet(
             queryset = queryset.filter(title__icontains=title)
         if show_themes:
             show_themes_ids = self._params_to_ints(show_themes)
-            queryset = queryset.filter(show_themes_id__in=show_themes_ids)
+            queryset = queryset.filter(themes__id__in=show_themes_ids)
 
         return queryset.distinct()
 
@@ -101,7 +101,7 @@ class ShowSessionViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(show_time__date=date)
 
         if astronomy_show_id:
-            queryset = queryset.filter(astronomy_show_id=int(astronomy_show_id))
+            queryset = queryset.filter(astronomy_show__id=int(astronomy_show_id))
 
         return queryset
 
