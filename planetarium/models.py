@@ -90,13 +90,17 @@ class Ticket(models.Model):
     def clean(self):
         if self.row < 1 or self.row > self.show_session.planetarium_dome.rows:
             raise ValidationError(
-                {"row": "Row number must be within the range of rows in the planetarium dome."}
+                {"row": "Row number must be within "
+                        "the range of rows in the planetarium dome."}
             )
 
-        # Check if the seat is within the range
-        if self.seat < 1 or self.seat > self.show_session.planetarium_dome.seats_in_row:
+        if (
+            self.seat < 1
+            or self.seat > self.show_session.planetarium_dome.seats_in_row
+        ):
             raise ValidationError(
-                {"seat": "Seat number must be within the range of seats in the row."}
+                {"seat": "Seat number must be within "
+                         "the range of seats in the row."}
             )
 
         if Ticket.objects.filter(

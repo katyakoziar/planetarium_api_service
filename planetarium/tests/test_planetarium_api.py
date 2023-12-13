@@ -6,8 +6,16 @@ from rest_framework.test import APIClient
 
 from django.urls import reverse
 
-from planetarium.models import AstronomyShow, ShowTheme, PlanetariumDome, ShowSession
-from planetarium.serializers import AstronomyShowListSerializer, AstronomyShowDetailSerializer
+from planetarium.models import (
+    AstronomyShow,
+    ShowTheme,
+    PlanetariumDome,
+    ShowSession
+)
+from planetarium.serializers import (
+    AstronomyShowListSerializer,
+    AstronomyShowDetailSerializer
+)
 
 ASTRONOMY_SHOW_URL = reverse("planetarium:astronomyshow-list")
 SHOW_SESSION_URL = reverse("planetarium:showsession-list")
@@ -46,7 +54,10 @@ def sample_show_session(**params):
 
 
 def detail_astronomy_show_url(**params):
-    return reverse("planetarium:astronomyshow-detail", args=[params["astronomy_show_id"]])
+    return reverse(
+        "planetarium:astronomyshow-detail",
+        args=[params["astronomy_show_id"]]
+    )
 
 
 class UnauthenticatedPlanetariumApiTests(TestCase):
@@ -164,7 +175,6 @@ class AdminPlanetariumApiTests(TestCase):
         )
         for key in payload:
             self.assertEqual(payload[key], getattr(show, key))
-
 
     def test_create_movie_with_genres(self):
         theme1 = sample_show_theme()
