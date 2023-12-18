@@ -44,3 +44,6 @@ docker-compose up
 - [Get access token](http://127.0.0.1:8000/api/user/token/)
 
 ![img.png](db_schema.png)
+![token.png](token.png)
+![planetarium.png](planetarium.png)
+![swagger.png](swagger.png)
